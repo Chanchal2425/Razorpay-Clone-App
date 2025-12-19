@@ -4,8 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="main.css">
+  <!-- <link rel="stylesheet" href="main.css"> -->
+  <link rel="stylesheet" href="tailwind.min.css">
+
+<script src="https://cdn.tailwindcss.com/3.3.0"></script>
 <style>
+ 
+/* ======= ADD THIS CUSTOM CSS ======= */
+/* Custom Color Definitions */
+:root {
+  --deep-blue: #02042a;
+  --light-blue: #2b84ea;
+  --green-light: #61cea6;
+  --light-blue-300: #4b94ed;
+  --light-blue-500: #0b72e7;
+  --gray-blue: #344a6c;
+  --gray-text: #818597;
+  --deep-blue-head: #162f56;
+}
+
+/* Apply custom colors to classes */
+.bg-deepBlue { background-color: var(--deep-blue) !important; }
+.text-lightBlue { color: var(--light-blue) !important; }
+.bg-lightBlue { background-color: var(--light-blue) !important; }
+.bg-lightBlue300 { background-color: var(--light-blue-300) !important; }
+.bg-lightBlue500 { background-color: var(--light-blue-500) !important; }
+.text-lightBlue500 { color: var(--light-blue-500) !important; }
+.text-grayBlue { color: var(--gray-blue) !important; }
+.bg-greenLight { background-color: var(--green-light) !important; }
+.text-grayText { color: var(--gray-text) !important; }
+.text-deepBlueHead { color: var(--deep-blue-head) !important; }
+
+/* Font family */
+.font-mullish { 
+  font-family: 'Mulish', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Fix the negative padding issue */
+.corefeaturesection{
+  background-size: 100% 100%;
+  padding-top: 12rem; /* CHANGED from -12rem to 12rem */
+  padding-bottom: 6rem;
+}
+/* ======= END OF CUSTOM CSS ======= */
+
+/* Your existing CSS continues below... */
+.companieslist{
+  animation: 10s infinite linear movecompany;
+}
+@keyframes movecompany {
+  0%{
+    top: 0;
+  }
+  100%{
+    top: -50%;
+  }
+}
+/* ... rest of your existing CSS ... */
+
   .corefeaturesection{
     background-size: 100% 100%;
     padding-top: -12rem;
@@ -225,6 +281,58 @@ opacity: 1;
   }
 }
 
+/* ====== FIX ALL HOVER STATES ====== */
+
+/* 1. Define all custom hover classes */
+.hover\:text-grayBlue:hover { color: #344a6c !important; }
+.hover\:bg-lightBlue500:hover { background-color: #0b72e7 !important; }
+.hover\:text-lightBlue:hover { color: #2b84ea !important; }
+.hover\:bg-lightBlue:hover { background-color: #2b84ea !important; }
+.hover\:border-lightBlue:hover { border-color: #2b84ea !important; }
+.hover\:border-grayBlue:hover { border-color: #344a6c !important; }
+
+/* 2. Fix the specific Sign Up button */
+button.bg-white.text-lightBlue.border-lightBlue:hover {
+  color: #344a6c !important;
+  border-color: #344a6c !important;
+}
+
+/* 3. Fix Log In button */
+button.bg-deepBlue.border-lightBlue:hover {
+  background-color: #2b84ea !important;
+  border-color: #2b84ea !important;
+}
+
+/* 4. Fix main hero button */
+button.bg-lightBlue:hover {
+  background-color: #0b72e7 !important;
+}
+
+/* 5. Fix feature section buttons */
+button.bg-lightBlue300:hover {
+  background-color: #0b72e7 !important;
+}
+
+/* 6. Fix CTA button */
+button.bg-white.text-lightBlue:hover.text-blue-700 {
+  color: #1d4ed8 !important;
+}
+
+/* 7. Force transitions to work */
+.transition-all {
+  transition: all 0.2s ease-in-out !important;
+}
+
+.duration-200 {
+  transition-duration: 200ms !important;
+}
+
+/* 8. Test: Add visual feedback */
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
 </style>
 
 </head>
@@ -318,7 +426,7 @@ opacity: 1;
         </ul>
         <div class="flex gap-4">
           <img src="images/india-flag.svg" alt="avatar" height="20px" width="48px" />
-          <button class="bg-deepBlue py-2 px-5  text-white  border-lightBlue border rounded-sm font-bold">
+          <button class="bg-deepBlue py-2 px-5  text-white  border-lightBlue border rounded-sm font-bold transition-all duration-200">
             Log in
           </button>
           <button
@@ -350,7 +458,7 @@ opacity: 1;
       <!-- right part -->
       <img src="images/hero-illustration.jpg" alt="banner" class="max-w-[600px] w-full ">
     </div>
-    <div class="absolute w-[92.13rem] overflow-hidden left-0 right-0">
+    <div class="absolute w-[138.20rem] overflow-hidden left-0 right-0">
       <!-- left-0 and right-0 means taking the 100% screen size -->
       <img src="images/hero-shape.svg" alt="shape" width="100%" class="overflow-hidden">
     </div>
@@ -652,7 +760,7 @@ opacity: 1;
   <!-- Feature section 2 -->
   <!-- bg-cover is important otherwise the image will take the space of the content regardless of its original shape -->
   <section class="bg-[url(images/feature-section-2BG.svg)] bg-no-repeat  bg-cover pb-[350px] mt-14 relative align-middle   pt-[11rem] w-full h-[1450px]">
-    <div class="mx-auto max-w-[1060px] pt-4 relative w-10/12 -mt-[5.8rem]">
+    <div class="mx-auto max-w-[1060px] pt-10 relative w-10/12 -mt-[5.8rem]">
       <h2 class="font-bold text-[1.2rem] pb-3  text-white text-center">Explore Razorpay Business Banking</h2>
       <div class="mb-6 h-1 w-6 bg-greenLight mx-auto rounded-sm"></div>
 
@@ -675,26 +783,26 @@ opacity: 1;
             </h3>
 
             <ul class="space-y-2">
-              <li class="flex space-x-1 items-center text-greenLight">
+              <li class="flex space-x-1 items-center text-green-50">
                 <img src="images/handshake.svg" alt="icon" class="w-[15px] pt-[3px]">
                 <p>Open a fully digital current account</p>
               </li>
-              <li class="flex space-x-1 items-center text-greenLight">
+              <li class="flex space-x-1 items-center text-green-50">
                 <img src="images/handshake.svg" alt="icon" class="w-[15px] pt-[3px]">
                 <p>Automate payables & complete payments</p>
               </li>
-              <li class="flex space-x-1 items-center text-greenLight">
+              <li class="flex space-x-1 items-center text-green-50">
                 <img src="images/handshake.svg" alt="icon" class="w-[15px] pt-[3px]">
                 <p>Simplify and track spends with corporate cards</p>
               </li>
-              <li class="flex space-x-1 items-center text-greenLight">
+              <li class="flex space-x-1 items-center text-green-50">
                 <img src="images/handshake.svg" alt="icon" class="w-[15px] pt-[3px]">
                 <p>View financial insights at a glance</p>
               </li>
             </ul>
             <div class="flex space-x-5">
               <button
-                class="bg-lightBlue300 hover:bg-lightBlue500 w-fit font-bold text-white px-5 py-4 pr-20 rounded-md cursor-pointer transition-all duration-200">
+                class="bg-lightBlue300 hover:bg-blue-950 w-fit font-bold text-white px-5 py-4 pr-20 rounded-md cursor-pointer transition-all duration-200">
                 Sign Up
                 <div
                   class="w-12 h-[60px] bg-greenLight absolute -mt-[42px] ml-16 skew-x-[20deg] flex justify-center items-center">
